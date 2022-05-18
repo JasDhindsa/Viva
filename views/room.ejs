@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script>
+    const ROOM_ID = "<%= roomId %>"
+  </script>
+  <script defer src="https://unpkg.com/peerjs@1.2.0/dist/peerjs.min.js"></script>
+  <script src="/socket.io/socket.io.js" defer></script>
+  <script src="script.js" defer></script>
+  <title>Viva</title>
+  <style>
+
+
+    #video-grid {
+      /* display: grid;
+      grid-template-columns: repeat(auto-fill, 300px);
+      grid-auto-rows: 300px;
+      grid-column: auto; */
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+      background-color: var( — main-dark);
+    }
+    
+    video {
+      /* width: 150%;
+      height: 150%;
+      object-fit: cover;
+      border-radius: 25px; */
+      
+      height: 300px;
+      border-radius: 1rem;
+      margin: 0.5rem;
+      width: 400px;
+      object-fit: cover;
+      transform: rotateY(180deg);
+      -webkit-transform: rotateY(180deg);
+      -moz-transform: rotateY(180deg);
+      border-style: solid;
+    }
+
+    .container{
+      width: 90%;
+      margin: 0 auto;
+    }
+    
+    header{
+      background-color: antiquewhite;
+      border-radius: 25px;
+    }
+
+    header::after{
+      content : '';
+      display:  table;
+      clear: both;
+    }
+    .logo{
+      float: left;
+      size: 10px;
+      width: 150px;
+      height: 70px;
+    }
+    nav{
+      float: right;
+    }
+
+    nav ul{
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    nav li{
+      display: inline-block;
+      margin-left: 70px;
+      padding-top: 23px;
+      position: relative;
+    }
+    nav a{
+      color: #444;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 14px;
+      font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    
+    nav a:hover{
+      color : #000;
+      
+    }
+
+    nav a::before{
+
+      content: '';
+      display: block;
+      height: 5px;
+
+      background-color: #444;
+      position: absolute;
+      top : 0;
+      width: 0%;
+    }
+
+    nav a:hover::before{
+      width :100%
+
+    }
+    .text-btn{
+      text-align: center;
+
+    }
+
+    ::-webkit-input-placeholder {
+    text-align: center;
+    }
+
+    :-moz-placeholder {
+      text-align: center;
+    }
+
+    br {
+      display: block; /* makes it have a width */
+      content: ""; /* clears default height */
+      margin-top: 8px; /* change this to whatever height you want it */
+    }
+
+    body{
+      background-color: rgb(243, 224, 199);
+    }
+    
+  </style>
+
+
+</head>
+<body>
+ 
+<header>
+
+
+  <div class="container">
+    <img src = "vivaLogo.png" alt = "logo" class = "logo"/>
+    <nav> 
+      <ul>
+        <li><a href = "/index">Home</a></li> 
+        <li></li><a href = "/">Call</a></li> 
+      </ul>
+    </nav>
+  </div>
+</header>
+  
+  <div id="video-grid"></div>
+  
+  <div class="text-btn">
+
+    <div>
+      <button  id = 'myBtn' type = "button" style=" display:block; margin: 0 auto; background-color:rgb(13, 52, 170); color: white;height: 50px; width: 100px; border-radius: 25px; border: none; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 15px;" onclick="redirect()" > New Room </button>
+        <br><br>
+      <input type="text"  style=" page-break-inside: 15px; color: black ;height: 50px; width: 100px; border-radius: 25px; border-color:rgb(13, 52, 170);  ; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 15px;" id="input-get" placeholder="Custom Room">
+      <button id="btn-get" type = "button" style="background-color:rgb(13, 52, 170); color: white;height: 50px; width: 100px; border-radius: 25px; border: none; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 15px;">Create Room</button>
+    </div>
+      <div id="result">
+          <!-- Result -->
+      </div>
+    <div>
+
+  </div>
+</div>
+
+</body>
+</html>
